@@ -4,6 +4,7 @@ jobs:
   build:
     machine: true
     steps:
+      - run: echo $PWD
       - run: ls
       - run: cd ~/src
       - run: cmake .
