@@ -7,7 +7,8 @@ jobs:
       - checkout
       - run: echo $PWD
       - run: ls
-      - run: cd project/src
+      - run: cd /src
       - run: cmake .
       - run: make
+      - run: ./runTests
 
