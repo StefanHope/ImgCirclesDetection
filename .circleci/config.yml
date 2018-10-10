@@ -6,7 +6,7 @@ jobs:
     steps:
       - run: echo $PWD
       - run: ls
-      - run: cd ~/src
+      - run: cd project/src
       - run: cmake .
       - run: make
 
