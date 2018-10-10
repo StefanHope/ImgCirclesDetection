@@ -29,7 +29,7 @@ TEST_F(Image_Test, ComputeGravityCenter01)
 //  cv::Point gravityCenter = image.ComputeGravityCenter(entryData);
 //  EXPECT_EQ(2.0, gravityCenter.x);
 //  EXPECT_EQ(2.0, gravityCenter.y);
-//  EXPECT_EQ(2.0, 2.0);
+     EXPECT_EQ(2, 2);
 }
 
 TEST_F(Image_Test, ComputeGravityCenter02)
