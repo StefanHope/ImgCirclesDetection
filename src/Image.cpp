@@ -2,33 +2,43 @@
 
 int Image::LoadImage(char* imageFile)
 {
-  src = cv::imread(imageFile);
-  if (src.empty()){
+  sourceImage = cv::imread(imageFile);
+  if (sourceImage.empty()){
     std::cerr << "No image supplied ..." << std::endl;
     return -1;
   }
+
+  cv::imshow("SourceImage", sourceImage);
+  cv::waitKey(0);
+ 
+  return 0;
+}
+
+int Image::FindCircles()
+{
+  ApplyFilters();
+  DetectContours();
+  CheckEachContour();
+  //  image.CheckAllContoursInOne();
 
   return 0;
 }
 
 void Image::ApplyFilters()
 {
-  cv::imshow( "DisplayImage", src );
-  cv::waitKey(0);
-  
+ 
   // Converts image from one color space to another
-  cvtColor( src, src_gray, cv::COLOR_BGR2GRAY );
-  cv::imshow( "DisplayImage", src_gray );
+  cvtColor(sourceImage, greyImage, cv::COLOR_BGR2GRAY);
+  cv::imshow("greyImage", greyImage);
   cv::waitKey(0);
 
   // Image smoothing
-  cv::blur( src_gray, src_gray, cv::Size(3,3) );
+  cv::blur(greyImage, greyImage, cv::Size(3,3));
 }
 
 void Image::DetectContours()
 {
-
-  Canny( src_gray, detectedEdges, thresh, thresh*2, 3 );
+  Canny( greyImage, detectedEdges, thresh, thresh*2, 3 );
   findContours( detectedEdges, contoursList, hierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_SIMPLE, cv::Point(0, 0) );
 }
 
@@ -67,6 +77,7 @@ void Image::CheckAllContoursInOne()
 
   cv::waitKey(0);
 }
+
 bool Image::IsCircle( std::vector<cv::Point> _pointsList ){
   cv::Point CG = ComputeGravityCenter( _pointsList );
 

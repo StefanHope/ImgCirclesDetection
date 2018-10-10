@@ -14,13 +14,7 @@ int main( int, char** argv )
   if (image.LoadImage(argv[1]) != 0)
     return -1;
 
-  image.ApplyFilters();
-
-  image.DetectContours();
-
-  image.CheckEachContour();
-
-//  image.CheckAllContoursInOne();
+  image.FindCircles();
   
   return(0);
 }
