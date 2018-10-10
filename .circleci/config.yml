@@ -3,7 +3,6 @@ version: 2
 jobs:
   build:
     machine: true
-        steps:
-          - run:
-              command: echo Hello, world.
+    steps:
+      - run: echo "Hello, world."
 
