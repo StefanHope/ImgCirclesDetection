@@ -19,8 +19,8 @@ list(REMOVE_ITEM DisplayImage_SRC src/Main.cpp)
 #########################################
 #### Executable and linked libraries ####
 #########################################
-add_library(displayImageLib ${DisplayImage_SRC})
 add_executable(DisplayImage Main.cpp)
+add_library(displayImageLib ${DisplayImage_SRC})
 target_link_libraries(DisplayImage displayImageLib)
 find_package(OpenCV REQUIRED)
 target_link_libraries(DisplayImage ${OpenCV_LIBS})
@@ -28,8 +28,6 @@ target_link_libraries(DisplayImage ${OpenCV_LIBS})
 #########################################
 ##### Tests #############################
 #########################################
-enable_testing()
-
 # Find test files
   file(GLOB_RECURSE Tests_SRC
       "../unitTests/*.h"
@@ -37,10 +35,17 @@ enable_testing()
       )
 
 ## Create the executable and link it with project libs
+enable_testing()
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+
+find_package(Threads)
+
 add_executable(runTests ${Tests_SRC})
-target_link_libraries(runTests gtest pthread)
-target_link_libraries(runTests displayImageLib)
 target_link_libraries(runTests ${OpenCV_LIBS})
+target_link_libraries(runTests displayImageLib)
+target_link_libraries(runTests ${GTEST_LIBRARIES})
+target_link_libraries(runTests ${CMAKE_THREAD_LIBS_INIT})
 
 # Add the make test option
 add_test(UnitTests runTests)
