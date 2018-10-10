@@ -8,7 +8,8 @@ jobs:
       - run: echo $PWD
       - run: ls
       - run: cd src
-      - run: cmake .
-      - run: make
+      - run: echo $PWD
+      - run: src/cmake .
+      - run: src/make
       - run: ./runTests
 
