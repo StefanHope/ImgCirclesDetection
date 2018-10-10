@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Install CMAKE
           command: 'sudo apt-get update && sudo apt-get install -y cmake'
-      - run: src/cmake .
-      - run: src/make
-      - run: ./runTests
+      - run: cd src && cmake .
+      - run: cd src && make
+      - run: cd src && ./runTests
 
