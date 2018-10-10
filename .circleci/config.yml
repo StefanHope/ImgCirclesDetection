@@ -4,5 +4,7 @@ jobs:
   build:
     machine: true
     steps:
-      - run: echo "Hello, world."
+      - run: cd src
+      - run: cmake .
+      - run: make
 
