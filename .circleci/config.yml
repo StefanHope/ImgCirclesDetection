@@ -15,6 +15,9 @@ jobs:
       - run:
           name: Install OpenCv
           command: 'sudo apt-get install libopencv-dev'
+      - run:
+          name: Install GTest
+          command: 'sudo apt-get install libgtest-dev'
       - run: cd src && cmake .
       - run: cd src && make
       - run: cd src && ./runTests
