@@ -5,11 +5,6 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: echo $PWD
-      - run: cd ~/ && ls
-      - run: cd /usr && ls
-      - run: cd src
-      - run: echo $PWD
       - run:
           name: Install CMAKE
           command: 'sudo apt-get update && sudo apt-get install -y cmake'
@@ -19,7 +14,6 @@ jobs:
       - run:
           name: Install GTest
           command: 'sudo apt-get install libgtest-dev'
-      - run: cd /usr/src && ls
       - run: cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv /usr/src/gtest/*.a /usr/lib/
       - run: cd src && cmake .
       - run: cd src && make
