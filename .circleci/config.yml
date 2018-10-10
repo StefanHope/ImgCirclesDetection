@@ -4,7 +4,8 @@ jobs:
   build:
     machine: true
     steps:
-      - run: cd src
+      - run: ls
+      - run: cd ~/src
       - run: cmake .
       - run: make
 
