@@ -9,6 +9,7 @@ jobs:
       - run: ls
       - run: cd src
       - run: echo $PWD
+      - run: apt-get install cmake
       - run: ./src/cmake .
       - run: ./src/make
       - run: ./runTests
