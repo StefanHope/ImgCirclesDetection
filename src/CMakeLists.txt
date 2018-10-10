@@ -44,7 +44,7 @@ find_package(Threads)
 add_executable(runTests ${Tests_SRC})
 target_link_libraries(runTests ${OpenCV_LIBS})
 target_link_libraries(runTests displayImageLib)
-target_link_libraries(runTests ${GTEST_LIBRARIES})
+target_link_libraries(runTests ${GTEST_BOTH_LIBRARIES})
 target_link_libraries(runTests ${CMAKE_THREAD_LIBS_INIT})
 
 # Add the make test option
