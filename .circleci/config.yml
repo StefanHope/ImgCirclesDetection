@@ -9,7 +9,7 @@ jobs:
       - run: ls
       - run: cd src
       - run: echo $PWD
-      - run: src/cmake .
-      - run: src/make
+      - run: ./src/cmake .
+      - run: ./src/make
       - run: ./runTests
 
