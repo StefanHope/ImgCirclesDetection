@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Install CMAKE
           command: 'sudo apt-get update && sudo apt-get install -y cmake'
-       - run:
+      - run:
           name: Install OpenCv
           command: 'sudo apt-get install libopencv-dev'
       - run: cd src && cmake .
