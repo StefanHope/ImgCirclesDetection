@@ -1,11 +1,11 @@
 #include "gtest/gtest.h"
-#include "opencv2/imgproc/imgproc.hpp"
-#include "../src/Image.h"
+//#include "opencv2/imgproc/imgproc.hpp"
+//#include "../src/Image.h"
 
 class Image_Test : public ::testing::Test
 {
-  public:
-    Image image;
+//  public:
+//    Image image;
 
   protected:
     virtual void SetUp()
