@@ -19,5 +19,7 @@ jobs:
           command: 'sudo apt install valgrind'
       - run: cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv /usr/src/gtest/*.a /usr/lib/
       - run: cd src && cmake . && make
+      - run: cd / && ls
+      - run: sudo ln /dev/null /dev/raw1394
       - run: cd src && valgrind --leak-check=full ./runTests
 
