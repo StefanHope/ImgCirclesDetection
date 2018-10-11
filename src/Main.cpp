@@ -12,9 +12,10 @@ int main( int, char** argv )
   Image image;
 
   if (image.LoadImage(argv[1]) != 0)
-    return -1;
+    return(-1);
 
-  image.FindCircles();
-  
+  int circlesNb = image.FindCircles();
+  std::cout << "Circles number: " << circlesNb << std::endl;
+
   return(0);
 }

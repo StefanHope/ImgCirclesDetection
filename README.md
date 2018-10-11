@@ -1,9 +1,13 @@
 # Project description
-Computer Vision using opencv - Circles detection in an image
+
+Computer Vision using opencv: circles detection in an image
 
 # Compilation
-1. "cmake ."
+
+1. mkdir build && cd build
+1. "cmake ../src"
 2. "make"
 
 # Run
-"./DisplayImage ./cercle.jpg"
+
+```./DisplayImage ../src/entryImg.jpg```
