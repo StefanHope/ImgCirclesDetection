@@ -1,5 +1,17 @@
 #include "Image.h"
 
+// #define DISPLAY true
+
+#ifdef DISPLAY
+void DisplayImage(std::string winName, cv::Mat imgName)
+{
+  cv::imshow(winName, imgName);
+  cv::waitKey(0);
+}
+#else
+void DisplayImage(std::string winName, cv::Mat imgName){}
+#endif
+
 int Image::LoadImage(char* imageFile)
 {
   sourceImage = cv::imread(imageFile);
@@ -8,8 +20,7 @@ int Image::LoadImage(char* imageFile)
     return -1;
   }
 
-  cv::imshow("SourceImage", sourceImage);
-  /// cv::waitKey(0);
+  DisplayImage("SourceImage", sourceImage);
  
   return 0;
 }
@@ -18,11 +29,6 @@ int Image::FindCircles()
 {
   ApplyFilters();
   DetectContours();
-  
-  /*if (CheckAllContoursInOne())
-  {
-    return 1;
-  }*/
 
   return CheckEachContour();
 }
@@ -45,11 +51,9 @@ void Image::DetectContours()
 
 int Image::CheckEachContour()
 {
-  cv::Mat drawing = cv::Mat::zeros( detectedEdges.size(), CV_8UC3 );
-  cv::namedWindow("Contours", CV_WINDOW_AUTOSIZE );
- 
   int circlesNb = 0;
 
+  cv::Mat drawing = cv::Mat::zeros( detectedEdges.size(), CV_8UC3 );
   for(unsigned int contourId = 0; contourId < contoursList.size(); contourId++)
   {
     cv:: Scalar color = cv::Scalar(255, 255, 255);
@@ -65,32 +69,11 @@ int Image::CheckEachContour()
       std::cout << "Figure n°" << contourId << " is NOT a circle\n";
     }
 
-    imshow("Contours", drawing);
     contourId++;
-    // cv::waitKey(0);
+    DisplayImage("Contours", drawing);
   }
 
   return circlesNb;
-}
-
-bool Image::CheckAllContoursInOne()
-{
-  std::cout << "CheckAllContoursInOne\n";
-  std::vector<cv::Point> contoursConcatenation;
-  for (const auto& contour : contoursList) 
-    for (const auto& point : contour) 
-      contoursConcatenation.push_back(point);
-
-  if (IsCircle(contoursConcatenation) == false)
-  {
-    std::cout << "Concatenation is NOT a circle\n";
-    // cv::waitKey(0);
-    return false;
-  }
-
-  std::cout << "Concatenation is a circle\n"; 
-  // cv::waitKey(0);
-  return true;
 }
 
 bool Image::IsCircle( std::vector<cv::Point> _pointsList ){

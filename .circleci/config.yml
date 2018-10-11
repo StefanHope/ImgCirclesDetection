@@ -14,9 +14,6 @@ jobs:
       - run:
           name: Install GTest
           command: 'sudo apt-get install libgtest-dev'
-      - run:
-          name: Upgarde 
-          command: 'sudo apt-get upgrade'
       - run: cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv /usr/src/gtest/*.a /usr/lib/
       - run: cd src && cmake . && make
       - run: sudo ln /dev/null /dev/raw1394

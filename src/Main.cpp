@@ -15,7 +15,7 @@ int main( int, char** argv )
     return(-1);
 
   int circlesNb = image.FindCircles();
-  std::cout << "Circles number: " << circlesNb << std::endl;
+  std::cout << "Circles number found in image: " << circlesNb << std::endl;
 
   return(0);
 }
