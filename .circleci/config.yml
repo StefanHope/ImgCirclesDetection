@@ -14,8 +14,10 @@ jobs:
       - run:
           name: Install GTest
           command: 'sudo apt-get install libgtest-dev'
+       - run:
+          name: Install Valgrind 
+          command: 'sudo apt install valgrind'
       - run: cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv /usr/src/gtest/*.a /usr/lib/
-      - run: cd src && cmake .
-      - run: cd src && make
-      - run: cd src && ./runTests
+      - run: cd src && cmake . && make
+      - run: cd src && valgrind --leak-check=full ./runTests
 
