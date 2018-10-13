@@ -5,17 +5,5 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run:
-          name: Install CMAKE
-          command: 'sudo apt-get update && sudo apt-get install -y cmake'
-      - run:
-          name: Install OpenCv
-          command: 'sudo apt-get install libopencv-dev'
-      - run:
-          name: Install GTest
-          command: 'sudo apt-get install libgtest-dev'
-      - run: cd /usr/src/gtest && sudo cmake . && sudo make && sudo mv /usr/src/gtest/*.a /usr/lib/
-      - run: cd src && cmake . && make
-      - run: sudo ln /dev/null /dev/raw1394
-      - run: cd src && ./runTests
+      - run: cd docker && make image && make build
 
